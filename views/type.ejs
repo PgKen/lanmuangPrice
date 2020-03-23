@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/control.js"></script>
+
+</head>
+
+<body>
+    <div class="mainCheckPriceBox">
+        <%- include('headder') %>
+
+        <div class="content">
+            <%- include('menu') %>
+            <ul class="type">
+                <li>&nbsp;</li>
+                <form action="/addType" method="post">
+                    <li>
+                        <span></span>
+                        <label for="">เพิ่มประเภท</label>
+                        <input type="text" name="nameType">
+                        <button type="submit">เพิ่ม</button>
+                        <span></span>
+                    </li>
+                </form>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li class="tbHead">
+                    <span class="noneBg"></span>
+                    <span></span>
+                    <span style="flex: 3;">ประเภท</span>
+                    <span></span>
+                    <span></span>
+                    <span class="noneBg"></span>
+                </li>
+
+                <% for(let i = 0; i < dataType.length; i++){ %>
+                <li class="listData">
+                    <span class="noneLine"></span>
+                    <span class="lineBox"><%=(i+1) %></span>
+                    <span class="lineBox" style="flex: 3;"><%=dataType[i].typeName%></span>
+                    <span class="lineBox">
+                        <i class="material-icons edit" onclick="editType(<%=dataType[i].id%>)">
+                            create
+                        </i>
+                    </span>
+                    <span class="lineBox">
+                        <i class="material-icons del" onclick="deleteType(<%=dataType[i].id%>)">
+                            delete_forever
+                        </i>
+                    </span>
+                    <span></span>
+                </li>
+
+                <% } %>
+                <li>&nbsp;</li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    function deleteType(i) {
+        if (confirm("ต้องการลบประเภทสินค้า หรือไม่")) {
+            location.href = "/delType/" + i
+        }
+    }
+
+    function editType(i) {
+        //location.href = "/editType/" + i
+        alert("ยังอยู่ในขั้นตอนการพัฒนาโปรแกรม โปรดติดต่อทีม IT Srimuang")
+    }
+</script>
+
+</html>

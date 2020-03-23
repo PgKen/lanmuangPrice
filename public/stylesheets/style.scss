@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+body {
+    display: flex;
+    font-family: 'Kanit',
+        sans-serif;
+
+    .mainCheckPriceBox {
+        display: flex;
+        border: 1px solid red;
+        flex-direction: column;
+        flex: 1;
+
+        .banner {
+            display: flex;
+            flex-basis: 100%;
+            // border: 1px solid green;
+            // background-color: green;
+            background-color: #0b4f0b;
+            color: white;
+            justify-content: center;
+
+            ul {
+                padding: 10px;
+                margin: 0;
+                list-style: none;
+                display: flex;
+
+                li {
+                    font-size: 26px;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            border: 1px solid #CCC;
+            flex-basis: 100%;
+            flex-direction: row;
+
+            ul {
+                flex: 5;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            ul.mainMenu {
+                flex: 1;
+                display: flex;
+                border: 1px solid;
+                background-color: #FFF;
+                font-size: 18px;
+                flex-direction: column;
+                background-color: #1f3920;
+                color: lightyellow;
+
+                li {
+                    border-bottom: 2px solid #BBB;
+                    padding: 4px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #CCC;
+                        color: black;
+                    }
+                }
+            }
+
+            ul.type {
+                display: flex;
+                flex-direction: column;
+
+                li {
+                    // border: 1px solid blue;
+                    display: flex;
+
+
+
+                    label {
+                        flex: 1;
+                        justify-content: flex-end;
+                        padding: 0 10px 0 0;
+                        display: flex;
+                    }
+
+                    select {
+                        flex: 1;
+                    }
+
+                    input[type="text"] {
+                        flex: 1;
+                    }
+
+                    button {
+                        flex: 1;
+                    }
+
+                    span {
+                        //border: 1px solid;
+                        flex: 1;
+                        display: flex;
+                        justify-content: center;
+                        border-left: 1px solid #CCC;
+
+                        i.edit {
+                            cursor: pointer;
+                            color: green;
+
+                            &:hover {
+                                color: orange;
+                            }
+                        }
+
+                        i.del {
+                            cursor: pointer;
+                            color: red;
+
+                            &:hover {
+                                color: orange;
+                            }
+                        }
+                    }
+
+                    span.line {
+                        border-bottom: 1px solid;
+                    }
+
+                }
+
+
+
+                li.title {
+                    justify-content: center;
+
+                    label {
+                        font-size: 24px;
+                        /* color: red; */
+                        background-color: #4CAF50;
+                        display: flex;
+                        justify-content: center;
+                        padding: 8px;
+                    }
+                }
+
+                li.tbHead {
+                    span.noneBg {
+                        background: none;
+                    }
+
+                    span {
+                        background-color: #0b4f0b;
+                        color: #efe5d1;
+
+                    }
+                }
+
+                li.underLine {
+                    border-bottom: 2px solid green;
+                }
+
+                li.listData {
+                    span.noneLine {
+                        border: none;
+                    }
+
+                    span.lineBox {
+                        border-bottom: 1px solid #CCC;
+                    }
+
+                    span {
+                        input[type="text"] {
+                            color: blue;
+                            width: 100%;
+                            text-align: right;
+                        }
+
+                        button {
+                            padding: 8px;
+                            font-size: 20px;
+                        }
+                    }
+
+                }
+            }
+
+            ul.article {
+                background-color: gray;
+            }
+        }
+
+    }
+}

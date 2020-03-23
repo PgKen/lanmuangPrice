@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/control.js"></script>
+
+</head>
+
+<body>
+    <div class="mainCheckPriceBox">
+        <%- include('headder') %>
+
+        <div class="content">
+            <%- include('menu') %>
+            <ul class="type">
+                <li class="title">
+                    <label for=""><%= title %></label>
+                </li>
+                <li>&nbsp;</li>
+                <form action="/addKind" method="post">
+                    <li>
+                        <span></span>
+                        <label for="">เพิ่มชนิด</label>
+
+                        <select name="type" id="">
+                            <option value="">--- โปรดเลือกประเภท ---</option>
+                            <% for(let i=0; i < dataType.length; i++){ %>
+                            <option value="<%=dataType[i].id%>"><%=dataType[i].typeName%></option>
+                            <% } %>
+                        </select>
+                        <input type="text" name="nameKind">
+                        <button type="submit">เพิ่ม</button>
+                        <span></span>
+                    </li>
+                </form>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li class="tbHead">
+                    <span class="noneBg"></span>
+                    <span></span>
+                    <span style="flex: 2;">ชื่อชนิด</span>
+                    <span></span>
+                    <span></span>
+                    <span class="noneBg"></span>
+                </li>
+                <% let typName = "" %>
+                <% for(let i = 0; i < dataKind.length; i++){ %>
+                <% typeName = dataKind[i].typeName %>
+                <li class="listData">
+                    <span class="noneLine"></span>
+                    <span class="lineBox" style="color:#BBB;"><%=typeName%></span>
+                    <span class="lineBox" style="flex: 2;"><%=dataKind[i].kindName%></span>
+                    <span class="lineBox">
+                        <i class="material-icons edit" onclick="editType(<%=dataKind[i].idKind%>)">
+                            create
+                        </i>
+                    </span>
+                    <span class="lineBox">
+                        <i class="material-icons del" onclick="deleteKind(<%=dataKind[i].idKind%>)">
+                            delete_forever
+                        </i>
+                    </span>
+
+                    <span></span>
+                </li>
+
+                <% } %>
+                <li>&nbsp;</li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    function deleteKind(i) {
+
+        if (confirm("ต้องการลบประเภทสินค้า หรือไม่")) {
+
+            location.href = "/delKind/" + i
+        }
+    }
+
+    function editType(i) {
+        //location.href = "/editType/" + i
+        alert("ยังอยู่ในขั้นตอนการพัฒนาโปรแกรม โปรดติดต่อทีม IT Srimuang")
+    }
+</script>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/control.js"></script>
+
+</head>
+
+<body>
+    <div class="mainCheckPriceBox">
+        <%- include('headder') %>
+
+        <div class="content">
+            <%- include('menu') %>
+            <ul class="type">
+                <li class="title">
+                    <label for=""><%= title %></label>
+                </li>
+                <li>&nbsp;</li>
+
+                <form action="/selectTypeForPrice" method="post">
+                    <li>
+                        <span></span>
+
+                        <label for="">วันที่</label>
+                        <input type="date" name="gDate">
+                        <label for="">ประเภท</label>
+                        <select name="gType" id="">
+                            <option value="">--select--</option>
+                            <% for(let i =0; i < dataType.length; i++){ %>
+                            <option value="<%=dataType[i].id%>"><%=dataType[i].typeName%></option>
+                            <% } %>
+                        </select>
+                        <span></span>
+                        <span>
+                            <button type="submit">ตกลง</button>
+                        </span>
+                        <span></span>
+                        <span></span>
+
+                    </li>
+                </form>
+
+                <li class="underLine">&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>
+                    <input type="text" name="setDate" id="setDate" value="<%=setDate%>">
+                </li>
+                <li>&nbsp;</li>
+                <!-- data -->
+                <li class="tbHead">
+                    <span class="noneBg"></span>
+                    <span>id</span>
+                    <span>ประเถท</span>
+                    <span>ชนิด</span>
+                    <span style="flex: 3;">ชื่อสินค้า</span>
+                    <span>ราคาต่ำ</span>
+                    <span style="flex: 0.2;" style="color:white;">-</span>
+                    <span>ราคาสูง</span>
+                    <span>หน่วย</span>
+                    <span>แหล่งที่มา</span>
+                    <span class="noneBg"></span>
+                </li>
+                <form action="/addPrice" method="post">
+
+                    <input type="hidden" name="setDate" id="setDate" value="<%=setDate%>">
+
+                    <% for(let i =0; i < dataProductOnType.length; i++){ %>
+                    <li class="listData">
+                        <span class="noneBg"></span>
+                        <input type="hidden" name="idPro" value="<%=dataProductOnType[i].idPro%>">
+                        <span class="lineBox" style="color:#CCC;"><%=dataProductOnType[i].idPro%></span>
+                        <span class="lineBox"><%=dataProductOnType[i].typeName%></span>
+                        <span class="lineBox"><%=dataProductOnType[i].kindName%></span>
+                        <span style="flex: 3;" class="lineBox"><%=dataProductOnType[i].productName%></span>
+                        <span>
+                            <input type="text" name="startPrice" id="">
+                        </span>
+                        <span style="flex: 0.2;">-</span>
+                        <span>
+                            <input type="text" name="endPrice" id="">
+                        </span>
+                        <span class="lineBox">
+                            <select name="gUnit" id="">
+                                <option value="0">--select--</option>
+                                <% for(let i =0; i < dataUnit.length; i++){ %>
+                                <option value="<%=dataUnit[i].id%>"><%=dataUnit[i].unitName%></option>
+                                <% } %>
+                            </select>
+                        </span>
+                        <span class="lineBox">
+                            <select name="gLocate" id="">
+                                <option value="0">--select--</option>
+                                <% for(let i =0; i < dataLocate.length; i++){ %>
+                                <option value="<%=dataLocate[i].id%>"><%=dataLocate[i].locateName%></option>
+                                <% } %>
+                            </select>
+                        </span>
+                        <span class="noneBg"></span>
+                    </li>
+                    <% } %>
+                    <li>&nbsp;</li>
+                    <li class="listData">
+                        <span class="noneLine"></span>
+                        <span class="noneLine"></span>
+                        <span class="noneLine"></span>
+                        <span class="noneLine"></span>
+                        <span class="noneLine"></span>
+                        <span class="noneLine"></span>
+                        <span>
+                            <button type="submit">บันทึก</button>
+                        </span>
+                        <span></span>
+
+                    </li>
+                </form>
+                <li>&nbsp;</li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    function deleteType(i) {
+        if (confirm("ต้องการลบประเภทสินค้า หรือไม่")) {
+            location.href = "/delType/" + i
+        }
+    }
+
+    function editType(i) {
+        //location.href = "/editType/" + i
+        alert("ยังอยู่ในขั้นตอนการพัฒนาโปรแกรม โปรดติดต่อทีม IT Srimuang")
+    }
+</script>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/control.js"></script>
+
+</head>
+
+<body>
+    <div class="mainCheckPriceBox">
+        <%- include('headder') %>
+
+        <div class="content">
+            <%- include('menu') %>
+            <ul class="type">
+                <li class="title">
+                    <label for=""><%= title %></label>
+                </li>
+                <li>&nbsp;</li>
+
+                <form action="/selectTypeForShow" method="post">
+                    <li>
+                        <span></span>
+
+                        <label for="">วันที่</label>
+                        <input type="date" name="gDate" value="<%=setDate%>">
+                        <label for="">ประเภท</label>
+                        <select name="gType" id="">
+
+
+                            <option value="">--select--</option>
+                            <% for(let i =0; i < dataType.length; i++){ %>
+                            <option value="<%=dataType[i].id%>"><%=dataType[i].typeName%></option>
+                            <% } %>
+                        </select>
+                        <span></span>
+                        <span>
+                            <button type="submit">ตกลง</button>
+                        </span>
+                        <span></span>
+                        <span></span>
+
+                    </li>
+                </form>
+
+                <li class="underLine">&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>
+                    <input type="text" name="setDate" id="setDate" value="<%=setDate%>">
+                </li>
+                <li>&nbsp;</li>
+                <!-- data -->
+                <li class="tbHead">
+                    <span class="noneBg" style="flex: 0.2;"></span>
+                    <span>id</span>
+                    <span>ประเถท</span>
+                    <span>ชนิด</span>
+                    <span style="flex: 1.5;">วันที่</span>
+                    <span style="flex: 3;">ชื่อสินค้า</span>
+                    <span>ราคาต่ำ</span>
+                    <span style="flex: 0.2;" style="color:white;">-</span>
+                    <span>ราคาสูง</span>
+                    <span>หน่วย</span>
+                    <span>แหล่งที่มา</span>
+                    <span class="noneBg" style="flex: 0.2;"></span>
+                </li>
+                <form action="/addPrice" method="post">
+
+                    <input type="hidden" name="setDate" id="setDate" value="<%=setDate%>">
+
+                    <% for(let i =0; i < dataProduct.length; i++){ %>
+                    <li class="listData">
+                        <span class="noneBg" style="flex: 0.2;"></span>
+                        <input type="hidden" name="idPro" value="<%=dataProduct[i].idPro%>">
+                        <span class="lineBox" style="color:#CCC;"><%=dataProduct[i].idData%></span>
+                        <span class="lineBox" style="color: #ccc;"><%=dataProduct[i].typeName%></span>
+                        <span class="lineBox" style="color: #AAA;"><%=dataProduct[i].kindName%></span>
+                        <span class="lineBox" style="flex: 1.5;"><%=mDataProduct[i].gDatePrice%></span>
+                        <span style="flex: 3;" class="lineBox"><%=dataProduct[i].productName%></span>
+                        <span class="lineBox"><%=dataProduct[i].startPrice%></span>
+                        <span style="flex: 0.2;">-</span>
+                        <span class="lineBox"><%=dataProduct[i].endPrice%></span>
+                        <span class="lineBox"><%=dataProduct[i].unitName%></span>
+                        <span class="lineBox"><%=dataProduct[i].locateName%></span>
+                        <span class="noneBg" style="flex: 0.2;"></span>
+                    </li>
+                    <% } %>
+                    <li>&nbsp;</li>
+                </form>
+                <li>&nbsp;</li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
